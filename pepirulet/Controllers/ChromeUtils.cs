@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace pepirulet.Controllers
+namespace pepiAttendance.Controllers
 {
     public class ChromeUtils
     {

@@ -1,4 +1,4 @@
-namespace pepirulet
+namespace pepiAttendance
 {
     internal static class Program
     {

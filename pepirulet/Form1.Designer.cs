@@ -1,4 +1,4 @@
-﻿namespace pepirulet
+﻿namespace pepiAttendance
 {
     partial class Form1
     {

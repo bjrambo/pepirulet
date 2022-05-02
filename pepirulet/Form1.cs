@@ -1,9 +1,9 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using pepirulet.Controllers;
+using pepiAttendance.Controllers;
 
-namespace pepirulet
+namespace pepiAttendance
 {
     public partial class Form1 : Form
     {
