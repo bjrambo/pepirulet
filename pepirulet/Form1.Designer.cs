@@ -50,7 +50,6 @@
             // 
             // Password
             // 
-            this.Password.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.Password.Location = new System.Drawing.Point(12, 55);
             this.Password.Name = "Password";
             this.Password.PasswordChar = '*';
