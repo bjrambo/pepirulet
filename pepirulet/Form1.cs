@@ -1,6 +1,5 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 using pepiAttendance.Controllers;
 
 namespace pepiAttendance
@@ -20,14 +19,14 @@ namespace pepiAttendance
             string userId = UserId.Text;
             string password = Password.Text;
 
-
             if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(password))
             {
                 return;
             }
 
-            using (Driver = ChromeSetting.BrowserInit())
+            try
             {
+                Driver = ChromeSetting.BrowserInit();
                 if (Driver == null)
                 {
                     return;
@@ -86,7 +85,15 @@ namespace pepiAttendance
                 ChromeUtils.DelayRandom(1, 2);
                 Driver.SwitchTo().Frame("eventFrame");
                 Driver.FindElement(By.ClassName("link-gift")).Click();
+                Driver.Quit();
+                Driver.Dispose();
+                MessageBox.Show("출책을 완료하였습니다");
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("출석하는데 문제가 발생되었습니다!");
+            }
+
         }
     }
 }
