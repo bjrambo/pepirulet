@@ -7,7 +7,7 @@ namespace pepiAttendance
     public partial class Form1 : Form
     {
         public static ChromeDriver? Driver { get; set; }
-        public static readonly string SEARCH_NAME = "아키에이지";
+        public static readonly string SEARCH_URI = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EC%95%84%ED%82%A4%EC%97%90%EC%9D%B4%EC%A7%80";
 
         public Form1()
         {
@@ -33,24 +33,10 @@ namespace pepiAttendance
                     {
                         return;
                     }
-                    Driver.Navigate().GoToUrl("https://www.naver.com/");
-                    Driver.FindElement(By.Id("query")).SendKeys("");
-                    Driver.FindElement(By.Id("query")).Click();
-                    Driver.FindElement(By.Id("query")).Clear();
-                    Driver.FindElement(By.Id("query")).SendKeys(OpenQA.Selenium.Keys.Backspace);
-                    Driver.FindElement(By.Id("query")).SendKeys(OpenQA.Selenium.Keys.Control + OpenQA.Selenium.Keys.Backspace);
-                    Driver.FindElement(By.Id("query")).SendKeys(OpenQA.Selenium.Keys.Control + OpenQA.Selenium.Keys.Delete);
-                    char[] keyword = SEARCH_NAME.ToCharArray();
-                    for (int x = 0; x < keyword.Length; x++)
-                    {
-                        Driver.FindElement(By.Id("query")).SendKeys(keyword[x].ToString());
-                        Thread.Sleep(100);
-                    }
-                    Driver.FindElement(By.Id("query")).SendKeys(OpenQA.Selenium.Keys.Enter);
+                    Driver.Navigate().GoToUrl(SEARCH_URI);
                     ChromeUtils.DelayRandom(3, 5);
 
                     var element = Driver.FindElements(By.ClassName("info_group"))[4].FindElement(By.TagName("dd")).FindElements(By.TagName("a"));
-
                     element[1].Click();
                     Driver.SwitchTo().Window(Driver.WindowHandles.Last());
                     Driver.FindElement(By.ClassName("xlgames-login")).Click();
